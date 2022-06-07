@@ -1,0 +1,95 @@
+---
+sidebar: sidebar 
+permalink: reference-new.html 
+keywords: 'what"s new, new, features, release notes, enhancements' 
+summary: Cloud Volumes ONTAP 9.11.0提供了一项新的增强功能。 
+---
+= Cloud Volumes ONTAP 9.11.0中的新增功能
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP 9.11.0提供了一项新的增强功能。
+
+最新版本的 Cloud Manager 还引入了其他功能和增强功能。请参见 https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/whats-new.html["Cloud Manager 发行说明"^] 了解详细信息。
+
+
+
+== 支持弹性卷(2022年6月6日)
+
+Cloud Volumes ONTAP 聚合支持Amazon EBS弹性卷功能、可提高性能并增加容量、同时支持Cloud Manager根据需要自动增加底层磁盘容量。
+
+从Cloud Manager Connector 3.9.19版开始、可支持弹性卷、并支持特定Cloud Volumes ONTAP 版本和特定EBS磁盘类型。
+
+https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/concept-aws-elastic-volumes.html["了解有关支持弹性卷的更多信息"^]
+
+
+
+== 9.11.0 P1 (2022年5月2日)
+
+Cloud Volumes ONTAP 9.11.0 P1版本现在可在AWS、Azure和Google Cloud中使用。此版本包括以下增强功能。
+
+
+
+=== AWS支持ONTAP S3
+
+现在、您可以从AWS中的Cloud Volumes ONTAP 提供S3对象存储(Microsoft Azure已受支持)。除了NFS和SMB等基于文件的传统协议之外、Cloud Volumes ONTAP 还支持将S3作为横向扩展存储的一个选项。
+
+请注意以下事项：
+
+* 采用 Cloud Volumes ONTAP 的 ONTAP S3 的主要用例是通用对象存储。
+* 目前、Google Cloud中的Cloud Volumes ONTAP 不支持S3协议。
+* Cloud Manager 不为 ONTAP S3 功能提供任何管理功能。
+
+
+https://docs.netapp.com/us-en/ontap/object-storage-management/index.html["了解如何在 ONTAP 中配置和管理 S3 对象存储服务"^]。
+
+
+
+== 升级说明
+
+通读这些注释、了解有关升级到此版本的更多信息。
+
+
+
+=== 如何升级
+
+Cloud Volumes ONTAP 升级必须从 Cloud Manager 完成。您不应使用 System Manager 或命令行界面升级 Cloud Volumes ONTAP 。这样做可能会影响系统稳定性。
+
+http://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-updating-ontap-cloud.html["了解在 Cloud Manager 通知您时如何升级"^]。
+
+
+
+=== 支持的升级路径
+
+您可以从9.10.1版升级到Cloud Volumes ONTAP 9.11.0。Cloud Manager将提示您将符合条件的Cloud Volumes ONTAP 系统升级到此版本。
+
+
+
+=== 所需版本的Connector
+
+Cloud Manager Connector必须运行版本3.9.18或更高版本、才能将现有系统升级到9.11.0。
+
+
+TIP: 默认情况下，连接器会自动升级，因此您应运行最新版本。
+
+
+
+=== 停机
+
+* 升级单节点系统会使系统脱机长达 25 分钟，在此期间 I/O 会中断。
+* 升级 HA 对无中断， I/O 不会中断。在此无中断升级过程中，每个节点会同时进行升级，以继续为客户端提供 I/O 。
+
+
+
+
+=== c4 ， m4 和 r4 实例类型
+
+从 9.8 版开始，新的 Cloud Volumes ONTAP 系统不支持 C4 ， M4 和 r4 实例类型。如果您的现有 Cloud Volumes ONTAP 系统运行的是 C4 ， M4 或 r4 实例类型，则仍可升级到此版本。
+
+建议更改为 c5 ， m5 或 R5 实例系列中的实例类型。

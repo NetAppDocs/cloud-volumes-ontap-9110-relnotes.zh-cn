@@ -20,7 +20,7 @@ Cloud Volumes ONTAP 9.11.0提供了一项新的增强功能。
 
 
 
-== 支持弹性卷(2022年6月6日)
+== 支持弹性卷(2022年6月7日)
 
 Cloud Volumes ONTAP 聚合支持Amazon EBS弹性卷功能、可提高性能并增加容量、同时支持Cloud Manager根据需要自动增加底层磁盘容量。
 
